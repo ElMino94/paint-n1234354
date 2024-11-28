@@ -20,10 +20,10 @@ int main() {
     Texture blackTexture;
     Texture eraserTexture;
     redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
-    greenTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutonvert.png");
-    blueTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutonblue.png");
-    blackTexture.loadFromFile("");
-    eraserTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutoneraser.png");
+    greenTexture.loadFromFile("assetocorsa\\boutonrouge.png");
+    blueTexture.loadFromFile("assetocorsa\\boutonrouge.png");
+    blackTexture.loadFromFile("assetocorsa\\boutonrouge.png");
+    eraserTexture.loadFromFile("assetocorsa\\boutonrouge.png");
 
     Sprite redSprite(redTexture);
     redSprite.setPosition(10, 10);
@@ -34,14 +34,14 @@ int main() {
     Sprite blueSprite(blueTexture);
     blueSprite.setPosition(130, 10);
 
-    Sprite blackSprite(blueTexture);
+    Sprite blackSprite(blackTexture);
     blackSprite.setPosition(190, 10);
 
     Sprite eraserSprite(eraserTexture);
     eraserSprite.setPosition(250, 10);
 
     RectangleShape bg(Vector2f(300, 50));
-    bg.setFillColor(Color::White);
+    bg.setFillColor(Color(255,170,0));
 
 
     while (window.isOpen()) {
@@ -64,6 +64,10 @@ int main() {
             }
             else if (blueSprite.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                 currentColor = Color::Blue;
+                eraserMode = false;
+            }
+            else if (blackSprite.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                currentColor = Color::Black;
                 eraserMode = false;
             }
             else if (eraserSprite.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
@@ -95,11 +99,9 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::C)) shapes.clear();
         if (Keyboard::isKeyPressed(Keyboard::Up)) brushSize = min(50.0f, brushSize + 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Down)) brushSize = max(1.0f, brushSize - 0.2f);
+        if (Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
 
         window.clear(Color::White);
-
-
-
 
         for (const auto& shape : shapes) {
             window.draw(shape);
@@ -109,6 +111,7 @@ int main() {
         window.draw(redSprite);
         window.draw(greenSprite);
         window.draw(blueSprite);
+        window.draw(blackSprite);
         window.draw(eraserSprite);
         window.display();
     }
