@@ -1,4 +1,3 @@
-//test
 #include <SFML/Graphics.hpp>
 #include <vector>
 using namespace sf;
@@ -20,7 +19,7 @@ int main() {
     Texture blueTexture;
     Texture blackTexture;
     Texture eraserTexture;
-    redTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutonrouge.png");
+    redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
     greenTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutonvert.png");
     blueTexture.loadFromFile("C:\\Users\\trestoux\\Pictures\\Screenshots\\boutonblue.png");
     blackTexture.loadFromFile("");
@@ -35,10 +34,13 @@ int main() {
     Sprite blueSprite(blueTexture);
     blueSprite.setPosition(130, 10);
 
-    Sprite eraserSprite(eraserTexture);
-    eraserSprite.setPosition(190, 10);
+    Sprite blackSprite(blueTexture);
+    blackSprite.setPosition(190, 10);
 
-    RectangleShape bg(Vector2f(250, 50));
+    Sprite eraserSprite(eraserTexture);
+    eraserSprite.setPosition(250, 10);
+
+    RectangleShape bg(Vector2f(300, 50));
     bg.setFillColor(Color::White);
 
 
