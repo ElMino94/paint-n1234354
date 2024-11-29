@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 
     RenderWindow window(VideoMode(1920, 1080), "Paint pour les nuls");
-    window.setFramerateLimit(6000000000000000000);
+    window.setFramerateLimit(9999999999999999999);
 
     vector<CircleShape> shapes;
 
