@@ -19,11 +19,13 @@ int main() {
     Texture blueTexture;
     Texture blackTexture;
     Texture eraserTexture;
+    Texture dessinrecTexture;
     redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
     greenTexture.loadFromFile("assetocorsa\\boutonvert.png");
     blueTexture.loadFromFile("assetocorsa\\boutonbleu.png");
     blackTexture.loadFromFile("assetocorsa\\boutonblack.png");
     eraserTexture.loadFromFile("assetocorsa\\boutoneraser.png");
+    dessinrecTexture.loadFromFile("assetocorsa\\boutoneraser.png");
 
     Sprite redSprite(redTexture);
     redSprite.setPosition(10, 10);
@@ -39,6 +41,9 @@ int main() {
 
     Sprite eraserSprite(eraserTexture);
     eraserSprite.setPosition(250, 10);
+    
+    Sprite dessinrecSprite(dessinrecTexture);
+    dessinrecSprite.setPosition(310, 10);
 
     RectangleShape bg(Vector2f(1920, 50));
     bg.setFillColor(Color(170,170,170));
