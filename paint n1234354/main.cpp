@@ -20,10 +20,10 @@ int main() {
     Texture blackTexture;
     Texture eraserTexture;
     redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
-    greenTexture.loadFromFile("assetocorsa\\boutonrouge.png");
-    blueTexture.loadFromFile("assetocorsa\\boutonrouge.png");
-    blackTexture.loadFromFile("assetocorsa\\boutonrouge.png");
-    eraserTexture.loadFromFile("assetocorsa\\boutonrouge.png");
+    greenTexture.loadFromFile("assetocorsa\\boutonvert.png");
+    blueTexture.loadFromFile("assetocorsa\\boutonbleu.png");
+    blackTexture.loadFromFile("assetocorsa\\boutonblack.png");
+    eraserTexture.loadFromFile("assetocorsa\\boutoneraser.png");
 
     Sprite redSprite(redTexture);
     redSprite.setPosition(10, 10);
