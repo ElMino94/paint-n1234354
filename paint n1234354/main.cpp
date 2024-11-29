@@ -23,12 +23,13 @@ int main() {
     Texture blueTexture;
     Texture blackTexture;
     Texture eraserTexture;
-    Texture dessinrecTexture;
+    Texture saveTexture;
     redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
     greenTexture.loadFromFile("assetocorsa\\boutonvert.png");
     blueTexture.loadFromFile("assetocorsa\\boutonbleu.png");
     blackTexture.loadFromFile("assetocorsa\\boutonblack.png");
     eraserTexture.loadFromFile("assetocorsa\\boutoneraser.png");
+    saveTexture.loadFromFile("assetocorsa\\boutonsave.png");
 
     Sprite redSprite(redTexture);
     redSprite.setPosition(10, 10);
@@ -45,6 +46,9 @@ int main() {
     Sprite eraserSprite(eraserTexture);
     eraserSprite.setPosition(250, 10);
 
+    Sprite saveSprite(saveTexture);
+    saveSprite.setPosition(1800, 10);
+
     RectangleShape bg(Vector2f(1920, 50));
     bg.setFillColor(Color(170, 170, 170));
 
@@ -54,10 +58,6 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed)
                 window.close();
-        }
-
-        if (Mouse::isButtonPressed(Mouse::Right)) {
-
         }
 
         if (Mouse::isButtonPressed(Mouse::Left)) {
@@ -81,6 +81,11 @@ int main() {
             }
             else if (eraserSprite.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                 eraserMode = true;
+            }
+            else if (saveSprite.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                renderTexture.display();
+                renderTexture.getTexture().copyToImage().saveToFile("dessin.png");
+                printf("Une image a ete sauvegardee\n");
             }
             else {
                 CircleShape brush(brushSize);
@@ -110,12 +115,7 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Up)) brushSize = min(50.0f, brushSize + 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Down)) brushSize = max(1.0f, brushSize - 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
-        if (Keyboard::isKeyPressed(Keyboard::S)) {
-            renderTexture.display();
-            renderTexture.getTexture().copyToImage().saveToFile("dessin.png");
-            printf("Une image a ete sauvegardee");
-        }
-
+        
         window.clear(Color::White);
 
         for (const auto& shape : shapes) {
@@ -128,6 +128,7 @@ int main() {
         window.draw(blueSprite);
         window.draw(blackSprite);
         window.draw(eraserSprite);
+        window.draw(saveSprite);
         window.display();
     }
 
