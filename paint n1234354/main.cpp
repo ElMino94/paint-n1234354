@@ -8,6 +8,10 @@ int main() {
     RenderWindow window(VideoMode(1920, 1080), "Paint pour les nuls");
     window.setFramerateLimit(9999999999999999999);
 
+    RenderTexture renderTexture;
+    renderTexture.create(1920, 1080);
+    renderTexture.clear(Color::White);
+
     vector<CircleShape> shapes;
 
     Color currentColor = Color::Black;
@@ -98,6 +102,7 @@ int main() {
 
                 shapes.push_back(brush);
 
+                renderTexture.draw(brush);
             }
         }
 
@@ -105,6 +110,11 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Up)) brushSize = min(50.0f, brushSize + 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Down)) brushSize = max(1.0f, brushSize - 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
+        if (Keyboard::isKeyPressed(Keyboard::S)) {
+            renderTexture.display();
+            renderTexture.getTexture().copyToImage().saveToFile("dessin.png");
+            printf("Une image a ete sauvegardee");
+        }
 
         window.clear(Color::White);
 
