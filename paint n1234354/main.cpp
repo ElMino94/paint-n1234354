@@ -23,12 +23,14 @@ int main() {
     Texture blueTexture;
     Texture blackTexture;
     Texture eraserTexture;
+    Texture recTexture;
     Texture saveTexture;
     redTexture.loadFromFile("assetocorsa\\boutonrouge.png");
     greenTexture.loadFromFile("assetocorsa\\boutonvert.png");
     blueTexture.loadFromFile("assetocorsa\\boutonbleu.png");
     blackTexture.loadFromFile("assetocorsa\\boutonblack.png");
     eraserTexture.loadFromFile("assetocorsa\\boutoneraser.png");
+    recTexture.loadFromFile("assetocorsa\\boutonrec.png");
     saveTexture.loadFromFile("assetocorsa\\boutonsave.png");
 
     Sprite redSprite(redTexture);
@@ -45,6 +47,9 @@ int main() {
 
     Sprite eraserSprite(eraserTexture);
     eraserSprite.setPosition(250, 10);
+
+    Sprite recSprite(recTexture);
+    recSprite.setPosition(310, 10);
 
     Sprite saveSprite(saveTexture);
     saveSprite.setPosition(1800, 10);
@@ -114,8 +119,7 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::C)) shapes.clear();
         if (Keyboard::isKeyPressed(Keyboard::Up)) brushSize = min(50.0f, brushSize + 0.2f);
         if (Keyboard::isKeyPressed(Keyboard::Down)) brushSize = max(1.0f, brushSize - 0.2f);
-        if (Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
-        
+        if (Keyboard::isKeyPressed(Keyboard::Escape)) window.close();              
         window.clear(Color::White);
 
         for (const auto& shape : shapes) {
@@ -128,10 +132,10 @@ int main() {
         window.draw(blueSprite);
         window.draw(blackSprite);
         window.draw(eraserSprite);
+        window.draw(recSprite);
         window.draw(saveSprite);
         window.display();
     }
-
 
     return 0;
 }
