@@ -40,8 +40,8 @@ int main() {
     Sprite eraserSprite(eraserTexture);
     eraserSprite.setPosition(250, 10);
 
-    RectangleShape bg(Vector2f(300, 50));
-    bg.setFillColor(Color(255,170,0));
+    RectangleShape bg(Vector2f(1920, 50));
+    bg.setFillColor(Color(170,170,170));
 
 
     while (window.isOpen()) {
