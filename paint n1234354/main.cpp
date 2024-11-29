@@ -118,6 +118,7 @@ int main() {
         window.draw(blueSprite);
         window.draw(blackSprite);
         window.draw(eraserSprite);
+        window.draw(dessinrecSprite);
         window.display();
     }
 
